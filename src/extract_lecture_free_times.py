@@ -54,7 +54,12 @@ def extract_statutory_holidays(source_of_URL):
 	search_string1 = '<li><span>'
 	search_string2 = '</span>'
 
-	skip_entries = 3 # skip the first three entries (no extraction)
+	"""
+	Skip a certain amount of elements from the extractions as
+	defined by the variable 'skip_entries'. This depends on the
+	crawled data.
+	"""
+	skip_entries = 3
 	skip_pos = 0
 
 	return_event_descr = []
@@ -109,7 +114,20 @@ def extract_statutory_holidays(source_of_URL):
 		# remove the found information (and redo the search)
 		cut_string = cut_string[cut_pos4 + len(search_string2):]
 
+		"""
+		raise an error in case the number of events does not match
+		the number of extracted dates
+		"""
+		if len(return_event_descr) != len(return_event_date):
+			raise IndexError('Number of extracted event descriptions (' +
+				str(len(return_event_descr)) + ') != number of event dates (' +
+				str(len(return_event_date)) + ')'
+			)
+
+	# return the data through the function
 	return return_event_descr, return_event_date
+
+
 
 ## crawl the data (fetch the source code of the URLs) ##
 statutory_holidays_source = fetch_page(statutory_holidays)
@@ -118,16 +136,6 @@ statutory_holidays_source = fetch_page(statutory_holidays)
 return_event_descr, return_event_date = extract_statutory_holidays(
 	statutory_holidays_source
 )
-
-"""
-raise an error in case the number of events does not match
-the number of extracted dates
-"""
-if len(return_event_descr) != len(return_event_date):
-	raise IndexError('Number of extracted event descriptions (' +
-		str(len(return_event_descr)) + ') != number of event dates (' +
-		str(len(return_event_date)) + ')'
-	)
 
 # print the fetched and extracted data
 for i in range(len(return_event_descr)):
