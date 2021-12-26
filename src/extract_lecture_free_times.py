@@ -31,6 +31,15 @@ changes the corresponding function must be adapted.
 """
 
 def extract_statutory_holidays(source_of_URL):
+	"""Fetch the statutory holidays from an URL and return the extracted data.
+
+	Whenever the URL (source_of_URL) changes, this function must be adapted.
+	First the function fetches the source code of the URL and the resulting
+	string is cut at certain spots (defined by cut_pos1 and cut_pos2). Then
+	the statutory holidays (incl. its description) are extracted, stored and
+	returned via a list (return_event_descr and return_event_date).
+	"""
+
 	# change the fetched data from byte to str
 	encoding = 'latin-1'
 	source_str_data = str(source_of_URL, encoding)
@@ -130,6 +139,9 @@ def extract_statutory_holidays(source_of_URL):
 
 
 ## crawl the data (fetch the source code of the URLs) ##
+
+"""
+# statutory holidays
 statutory_holidays_source = fetch_page(statutory_holidays)
 
 ## extract the dates from the crawled pages ##
@@ -140,5 +152,6 @@ return_event_descr, return_event_date = extract_statutory_holidays(
 # print the fetched and extracted data
 for i in range(len(return_event_descr)):
 	print(return_event_descr[i] + ' | ' + return_event_date[i])
+"""
 
 ## insert the dates in the database (if they are not already in the DB) ##
