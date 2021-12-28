@@ -2,10 +2,6 @@
 
 import urllib.request
 
-# URL for the data which is to be crawled and processed
-academic_calender_URL = 'https://www.tuwien.at/studium/akademischer-kalender'
-statutory_holidays = 'https://www.wien.gv.at/amtshelfer/feiertage/'
-
 def fetch_page(URL_to_be_fetched):
 	"""Fetch the source code of a single page.
 
@@ -25,7 +21,7 @@ def fetch_page(URL_to_be_fetched):
 """
 Below are the two function which extract a list of dates
 corresponding to the dates at which the university is
-closed. The date formatting is JJJJ.MM.DD, e.g., 2019-02-14.
+closed. The (desired DB-)date formatting is JJJJ-MM-DD, e.g., 2019-02-14.
 Both functions are URL-sensitive, i.e., when the crawled URL
 changes the corresponding function must be adapted.
 """
@@ -74,11 +70,13 @@ def extract_statutory_holidays(source_of_URL):
 	return_event_descr = []
 	return_event_date = []
 
+	# process the string until an arbitrary length (100) of it is reached
 	while len(cut_string) > 100:
 		cut_pos3 = cut_string.find(search_string1)
 		cut_pos4 = cut_string.find(search_string2)
 
 		if skip_pos >= skip_entries:
+			# extract the event description and the date
 			event_extract = cut_string[cut_pos3 + len(search_string1):cut_pos4]
 			event_divider = ': '
 			pos_event_divider = event_extract.find(event_divider)
@@ -137,14 +135,117 @@ def extract_statutory_holidays(source_of_URL):
 	return return_event_descr, return_event_date
 
 
+def extract_academic_calendar(source_of_URL):
+	"""Fetch the academic calendar from an URL and return the extracted data.
+
+	Whenever the URL (source_of_URL) changes, this function must be adapted.
+	First the function fetches the source code of the URL and the resulting
+	string is cut at certain spots (defined by cut_pos1 and cut_pos2). Then
+	the academic calendar (incl. its description) are extracted, stored and
+	returned via a list (return_event_descr and return_event_date).
+	"""
+
+	def parse_single_date(event_string):
+		"""Extract/Convert a single date event.
+
+		This function parses a single event, e.g.,
+		'Montag, 15. November 2021' and returns the data formatted
+		to the user's desire (JJJJ-MM-DD).
+		"""
+
+		# use a dictionary to convert the months (Dezember -> 12, etc.)
+		dict_months = {
+			'Jänner': '01',
+			'Februar': '02',
+			'März': '03',
+			'April': '04',
+			'Mai': '05',
+			'Juni': '06',
+			'Juli': '07',
+			'August': '08',
+			'September': '09',
+			'Oktober': '10',
+			'November': '11',
+			'Dezember': '12'
+		}
+
+		# remove the name of the day (monday, tuesday, etc.)
+		event_string_clean = event_string[event_string.find(',') + 2:]
+
+		# extract day/month/year from the string
+		event_day = event_string_clean[0:2]
+		event_year = event_string_clean[-4:]
+		event_string_remove_year = event_string[:-5]
+		event_month = event_string_remove_year[event_string_remove_year.find('.') + 2:]
+
+		extracted_formatted_date = (
+			event_year + '-' + dict_months[event_month] +
+			'-' + '%02d' % (int(event_day),)
+		)
+
+		#print(event_string_remove_year + '||||' + extracted_formatted_date)
+		return extracted_formatted_date
+
+	# change the fetched data from byte to str
+	encoding = 'utf-8'
+	source_str_data = str(source_of_URL, encoding)
+
+	"""
+	Cut the string to contain only the relevant information.
+	The two cut points depend on a (unique) subset of the source.
+	The cut string containing the relevant source code is stored
+	in the variable 'cut_string'.
+	"""
+	cut_pos1 = source_str_data.find('aria-labelledby="c15570Heading5793"')
+	cut_pos2 = source_str_data.find('col-xl-3 ml-xl-auto')
+	cut_string = source_str_data[cut_pos1:cut_pos2]
+
+	"""
+	extract the dates and information from the URL subset
+	data. Each single extraction event is enclosed in between:
+	'<li><strong>Osterferien: </strong>Montag, 11. April 2022
+	bis Samstag, 23. April 2022</li>', which is used to extract
+	the information.
+	"""
+	search_string1 = '<li>'
+	search_string2 = '</li>'
+
+	# process the string until an arbitrary length (150) of it is reached
+	while len(cut_string) > 150:
+		cut_pos3 = cut_string.find(search_string1)
+		cut_pos4 = cut_string.find(search_string2)
+
+		# extract the event description and the date
+		event_extract = cut_string[cut_pos3 + len(search_string1):cut_pos4]
+
+		event_description = event_extract[event_extract.find('<strong>') + 8:event_extract.find('</strong>') - 1]
+		event_date_raw = event_extract[event_extract.find('</strong>') + 9:].strip()
+
+		single_event = event_date_raw.find('bis')
+
+		if single_event == -1:
+			single_date_str_parsed = parse_single_date(event_date_raw)
+			print('single event (' + event_description + '): ' + single_date_str_parsed)
+		else:
+			print('range event (' + event_description + '): ' + event_date_raw)
+
+		# remove the found information (and redo the search)
+		cut_string = cut_string[cut_pos4 + len(search_string2):]
+
+	#print(source_str_data)
 
 ## crawl the data (fetch the source code of the URLs) ##
 
-"""
-# statutory holidays
-statutory_holidays_source = fetch_page(statutory_holidays)
+# URL for the data which is to be crawled and processed
+academic_calendar_URL = 'https://www.tuwien.at/studium/akademischer-kalender'
+statutory_holidays_URL = 'https://www.wien.gv.at/amtshelfer/feiertage/'
 
-## extract the dates from the crawled pages ##
+"""
+## statutory holidays ##
+# fetch the page source code (statutory holidays)
+statutory_holidays_source = fetch_page(statutory_holidays_URL)
+
+# extract the dates and descriptions from the crawled page
 return_event_descr, return_event_date = extract_statutory_holidays(
 	statutory_holidays_source
 )
@@ -153,5 +254,12 @@ return_event_descr, return_event_date = extract_statutory_holidays(
 for i in range(len(return_event_descr)):
 	print(return_event_descr[i] + ' | ' + return_event_date[i])
 """
+
+## academic calendar ##
+# fetch the page source code (academic calendar)
+academic_calendar_source = fetch_page(academic_calendar_URL)
+
+# extract the dates and descriptions from the crawled page
+extract_academic_calendar(academic_calendar_source)
 
 ## insert the dates in the database (if they are not already in the DB) ##
