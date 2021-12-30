@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import urllib.request
+import datetime
 
 def fetch_page(URL_to_be_fetched):
 	"""Fetch the source code of a single page.
@@ -210,6 +211,9 @@ def extract_academic_calendar(source_of_URL):
 	search_string1 = '<li>'
 	search_string2 = '</li>'
 
+	return_event_descr = []
+	return_event_date = []
+
 	# process the string until an arbitrary length (150) of it is reached
 	while len(cut_string) > 150:
 		cut_pos3 = cut_string.find(search_string1)
@@ -218,7 +222,9 @@ def extract_academic_calendar(source_of_URL):
 		# extract the event description and the date
 		event_extract = cut_string[cut_pos3 + len(search_string1):cut_pos4]
 
-		event_description = event_extract[event_extract.find('<strong>') + 8:event_extract.find('</strong>') - 1]
+		event_description_raw = event_extract[event_extract.find('<strong>') + 8:event_extract.find('</strong>')]
+		event_description = event_description_raw.replace(':', '').rstrip()
+
 		event_date_raw = event_extract[event_extract.find('</strong>') + 9:].strip()
 
 		single_event = event_date_raw.find('bis')
@@ -226,11 +232,55 @@ def extract_academic_calendar(source_of_URL):
 		if single_event == -1:
 			single_date_str_parsed = parse_single_date(event_date_raw)
 			print('single event (' + event_description + '): ' + single_date_str_parsed)
+
+			return_event_descr.append(event_description)
+			return_event_date.append(single_date_str_parsed)
 		else:
 			print('range event (' + event_description + '): ' + event_date_raw)
 
+			event_date_start = event_date_raw[:single_event - 1]
+			event_date_end = event_date_raw[single_event + 4:]
+
+			event_date_start_formatted = parse_single_date(event_date_start)
+			event_date_end_formatted = parse_single_date(event_date_end)
+
+			return_event_descr.append(event_description)
+			return_event_date.append(event_date_start_formatted)
+
+			#print('		|' + event_date_start + '|' + event_date_end + '|')
+			#print('		|' + event_date_start_formatted + '|' + event_date_end_formatted + '|')
+
+			# generate dates for this event between start and end of it
+			year = event_date_start_formatted[0:4]
+			month = event_date_start_formatted[5:7]
+			day = event_date_start_formatted[8:]
+
+			date = datetime.datetime(int(year), int(month), int(day))
+			#print(' >' + year + '|' + month + '|' + day)
+
+			end_reached = False
+
+			for i in range(365): 
+				date += datetime.timedelta(days = 1)
+				extract_date = date.strftime("%Y-%m-%d")
+				#print(extract_date)
+
+				return_event_descr.append(event_description)
+				return_event_date.append(extract_date)
+
+
+				if (extract_date == event_date_end_formatted):
+					end_reached = True
+					break
+
+			if (end_reached == False):
+				raise RuntimeError('Error creating the ranged data set for the event: ' + event_description + '(start: ' + event_date_start_formatted + '; end: ' + event_date_end_formatted)
+
 		# remove the found information (and redo the search)
 		cut_string = cut_string[cut_pos4 + len(search_string2):]
+
+	# return the data through the function
+	return return_event_descr, return_event_date
 
 	#print(source_str_data)
 
@@ -260,6 +310,12 @@ for i in range(len(return_event_descr)):
 academic_calendar_source = fetch_page(academic_calendar_URL)
 
 # extract the dates and descriptions from the crawled page
-extract_academic_calendar(academic_calendar_source)
+return_event_descr, return_event_date = extract_academic_calendar(academic_calendar_source)
+
+# print the fetched and extracted data
+print('\n')
+for i in range(len(return_event_descr)):
+	print(return_event_descr[i] + '|' + return_event_date[i])
+
 
 ## insert the dates in the database (if they are not already in the DB) ##
