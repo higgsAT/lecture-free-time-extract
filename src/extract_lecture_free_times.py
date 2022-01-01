@@ -231,12 +231,12 @@ def extract_academic_calendar(source_of_URL):
 
 		if single_event == -1:
 			single_date_str_parsed = parse_single_date(event_date_raw)
-			print('single event (' + event_description + '): ' + single_date_str_parsed)
+			#print('single event (' + event_description + '): ' + single_date_str_parsed)
 
 			return_event_descr.append(event_description)
 			return_event_date.append(single_date_str_parsed)
 		else:
-			print('range event (' + event_description + '): ' + event_date_raw)
+			#print('range event (' + event_description + '): ' + event_date_raw)
 
 			event_date_start = event_date_raw[:single_event - 1]
 			event_date_end = event_date_raw[single_event + 4:]
@@ -279,6 +279,16 @@ def extract_academic_calendar(source_of_URL):
 		# remove the found information (and redo the search)
 		cut_string = cut_string[cut_pos4 + len(search_string2):]
 
+	"""
+	raise an error in case the number of events does not match
+	the number of extracted dates
+	"""
+	if len(return_event_descr) != len(return_event_date):
+		raise IndexError('Number of extracted event descriptions (' +
+			str(len(return_event_descr)) + ') != number of event dates (' +
+			str(len(return_event_date)) + ')'
+		)
+
 	# return the data through the function
 	return return_event_descr, return_event_date
 
@@ -291,31 +301,35 @@ academic_calendar_URL = 'https://www.tuwien.at/studium/akademischer-kalender'
 statutory_holidays_URL = 'https://www.wien.gv.at/amtshelfer/feiertage/'
 
 """
+"""
 ## statutory holidays ##
 # fetch the page source code (statutory holidays)
 statutory_holidays_source = fetch_page(statutory_holidays_URL)
 
 # extract the dates and descriptions from the crawled page
-return_event_descr, return_event_date = extract_statutory_holidays(
+return_event_descr_stat_hol, return_event_date_stat_hol = extract_statutory_holidays(
 	statutory_holidays_source
 )
 
 # print the fetched and extracted data
-for i in range(len(return_event_descr)):
-	print(return_event_descr[i] + ' | ' + return_event_date[i])
-"""
+for i in range(len(return_event_descr_stat_hol)):
+	print('stat hol: ' + return_event_descr_stat_hol[i] + ' | ' + return_event_date_stat_hol[i])
+
 
 ## academic calendar ##
 # fetch the page source code (academic calendar)
 academic_calendar_source = fetch_page(academic_calendar_URL)
 
 # extract the dates and descriptions from the crawled page
-return_event_descr, return_event_date = extract_academic_calendar(academic_calendar_source)
+return_event_descr_ac_cal, return_event_date_ac_cal = extract_academic_calendar(academic_calendar_source)
 
 # print the fetched and extracted data
 print('\n')
-for i in range(len(return_event_descr)):
-	print(return_event_descr[i] + '|' + return_event_date[i])
+for i in range(len(return_event_descr_ac_cal)):
+	print('ac cal: ' + return_event_descr_ac_cal[i] + '|' + return_event_date_ac_cal[i])
+
+
+## check for duplicates ##
 
 
 ## insert the dates in the database (if they are not already in the DB) ##
