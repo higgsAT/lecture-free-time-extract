@@ -310,11 +310,11 @@ statutory_holidays_source = fetch_page(statutory_holidays_URL)
 return_event_descr_stat_hol, return_event_date_stat_hol = extract_statutory_holidays(
 	statutory_holidays_source
 )
-
+"""
 # print the fetched and extracted data
 for i in range(len(return_event_descr_stat_hol)):
 	print('stat hol: ' + return_event_descr_stat_hol[i] + ' | ' + return_event_date_stat_hol[i])
-
+"""
 
 ## academic calendar ##
 # fetch the page source code (academic calendar)
@@ -322,14 +322,47 @@ academic_calendar_source = fetch_page(academic_calendar_URL)
 
 # extract the dates and descriptions from the crawled page
 return_event_descr_ac_cal, return_event_date_ac_cal = extract_academic_calendar(academic_calendar_source)
-
+"""
 # print the fetched and extracted data
 print('\n')
 for i in range(len(return_event_descr_ac_cal)):
 	print('ac cal: ' + return_event_descr_ac_cal[i] + '|' + return_event_date_ac_cal[i])
-
+"""
 
 ## check for duplicates ##
+"""
+Both extracted data sets (statutory holidays and academic calendar) are going to be
+inserted into a database (DB). If any date coincides, i.e., when a date is both a statutory
+holiday as well a free day in the academic calendar, the former date may be overwritten
+in the DB. Therefore, check for duplicate dates and merge the description (of the event) in
+that case.
+"""
+print('len (dates) stat holiday:  ' + str(len(return_event_date_stat_hol)))
+print('len (dates) acad calendar: ' + str(len(return_event_date_ac_cal)))
 
+# merge the two lists into one with unique (date) entries
+insert_DB_event_descr = return_event_descr_ac_cal
+insert_DB_event_date = return_event_date_ac_cal
+
+amount_duplicates_found = 0
+
+# remove duplicates and populate the (final) list
+for i in range(len(return_event_date_stat_hol)):
+	found_duplicate = False
+	for j in range(len(insert_DB_event_date)):
+		if(return_event_date_stat_hol[i] == insert_DB_event_date[j]):
+			insert_DB_event_descr[j] = insert_DB_event_descr[j] + ', ' + return_event_descr_stat_hol[i]
+			found_duplicate = True
+			amount_duplicates_found += 1
+			print('found duplicate: ' + str(amount_duplicates_found))
+	if (found_duplicate == False):
+		insert_DB_event_date.append(return_event_date_stat_hol[i])
+		insert_DB_event_descr.append(return_event_descr_stat_hol[i])
+
+print('\n\nlen (descr) final insert:  ' + str(len(insert_DB_event_descr)))
+print('len (dates) final insert: ' + str(len(insert_DB_event_date)))
+
+for k in range(len(insert_DB_event_date)):
+	print(str(k) + '|' + insert_DB_event_date[k] + '|' + insert_DB_event_descr[k])
 
 ## insert the dates in the database (if they are not already in the DB) ##
