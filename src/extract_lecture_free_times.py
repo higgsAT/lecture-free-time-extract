@@ -197,7 +197,7 @@ def extract_academic_calendar(source_of_URL):
 	The cut string containing the relevant source code is stored
 	in the variable 'cut_string'.
 	"""
-	cut_pos1 = source_str_data.find('aria-labelledby="c15570Heading5793"')
+	cut_pos1 = source_str_data.find('aria-labelledby="c426552Heading140139">')
 	cut_pos2 = source_str_data.find('col-xl-3 ml-xl-auto')
 	cut_string = source_str_data[cut_pos1:cut_pos2]
 
@@ -297,7 +297,7 @@ def extract_academic_calendar(source_of_URL):
 ## crawl the data (fetch the source code of the URLs) ##
 
 # URL for the data which is to be crawled and processed
-academic_calendar_URL = 'https://www.tuwien.at/studium/akademischer-kalender'
+academic_calendar_URL = 'https://www.tuwien.at/studium/akademischer-kalender/studienjahr-2021-22'
 statutory_holidays_URL = 'https://www.wien.gv.at/amtshelfer/feiertage/'
 
 """
