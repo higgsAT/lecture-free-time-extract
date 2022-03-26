@@ -2,6 +2,7 @@
 
 import urllib.request
 import datetime
+import sqlhandler
 
 def fetch_page(URL_to_be_fetched):
 	"""Fetch the source code of a single page.
@@ -362,7 +363,27 @@ for i in range(len(return_event_date_stat_hol)):
 print('\n\nlen (descr) final insert:  ' + str(len(insert_DB_event_descr)))
 print('len (dates) final insert: ' + str(len(insert_DB_event_date)))
 
+"""
 for k in range(len(insert_DB_event_date)):
 	print(str(k) + '|' + insert_DB_event_date[k] + '|' + insert_DB_event_descr[k])
+"""
 
 ## insert the dates in the database (if they are not already in the DB) ##
+## sql handler testing ##
+sqlhandler_testobj = sqlhandler.SqlHandler()
+
+## fetch all existing DB ##
+print('\nfetching all existing DB:')
+returnAllDB = sqlhandler_testobj.fetch_all_db(1)
+
+print('\n')
+
+## fetch all tables from a DB ##
+selectDB = returnAllDB[1]['Database']
+
+print(selectDB)
+
+print ('fetching all tables for DB: ' + selectDB)
+listStructureDB = sqlhandler_testobj.fetch_all_tables(selectDB, 1)
+
+print('\n')
