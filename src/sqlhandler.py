@@ -87,7 +87,7 @@ class SqlHandler:
 
 		return return_all_tables
 
-	def fetch_table_content(self, select_database, select_table, verbose):
+	def fetch_table_content(self, select_database, select_table, verbose = False):
 		"""Fetch data from a given table for a selected database and table.
 
 		For a given database and table on a SQL server, this

@@ -3,6 +3,10 @@
 import urllib.request
 import datetime
 import sqlhandler
+import numpy as np
+
+# sql DB variables
+from config import *
 
 def fetch_page(URL_to_be_fetched):
 	"""Fetch the source code of a single page.
@@ -223,7 +227,8 @@ def extract_academic_calendar(source_of_URL):
 		# extract the event description and the date
 		event_extract = cut_string[cut_pos3 + len(search_string1):cut_pos4]
 
-		event_description_raw = event_extract[event_extract.find('<strong>') + 8:event_extract.find('</strong>')]
+		event_description_raw = event_extract[event_extract.find('<strong>') +
+			8:event_extract.find('</strong>')]
 		event_description = event_description_raw.replace(':', '').rstrip()
 
 		event_date_raw = event_extract[event_extract.find('</strong>') + 9:].strip()
@@ -261,6 +266,9 @@ def extract_academic_calendar(source_of_URL):
 
 			end_reached = False
 
+			# populate ranged events, e.g., semester breaks
+			# which spans over months. If this range exceeds
+			# one year, something with the end date gone wrong!
 			for i in range(365): 
 				date += datetime.timedelta(days = 1)
 				extract_date = date.strftime("%Y-%m-%d")
@@ -269,13 +277,15 @@ def extract_academic_calendar(source_of_URL):
 				return_event_descr.append(event_description)
 				return_event_date.append(extract_date)
 
-
 				if (extract_date == event_date_end_formatted):
 					end_reached = True
 					break
 
 			if (end_reached == False):
-				raise RuntimeError('Error creating the ranged data set for the event: ' + event_description + '(start: ' + event_date_start_formatted + '; end: ' + event_date_end_formatted)
+				# check the end date
+				raise RuntimeError('Error creating the ranged data set for the event: ' +
+				event_description + '(start: ' + event_date_start_formatted + '; end: ' +
+				event_date_end_formatted + ". Eventlength exceeded 365 days")
 
 		# remove the found information (and redo the search)
 		cut_string = cut_string[cut_pos4 + len(search_string2):]
@@ -301,8 +311,6 @@ def extract_academic_calendar(source_of_URL):
 academic_calendar_URL = 'https://www.tuwien.at/studium/akademischer-kalender/studienjahr-2021-22'
 statutory_holidays_URL = 'https://www.wien.gv.at/amtshelfer/feiertage/'
 
-"""
-"""
 ## statutory holidays ##
 # fetch the page source code (statutory holidays)
 statutory_holidays_source = fetch_page(statutory_holidays_URL)
@@ -311,11 +319,10 @@ statutory_holidays_source = fetch_page(statutory_holidays_URL)
 return_event_descr_stat_hol, return_event_date_stat_hol = extract_statutory_holidays(
 	statutory_holidays_source
 )
-"""
-# print the fetched and extracted data
+
+# print the fetched and extracted data (statutory holidays)
 for i in range(len(return_event_descr_stat_hol)):
 	print('stat hol: ' + return_event_descr_stat_hol[i] + ' | ' + return_event_date_stat_hol[i])
-"""
 
 ## academic calendar ##
 # fetch the page source code (academic calendar)
@@ -323,21 +330,19 @@ academic_calendar_source = fetch_page(academic_calendar_URL)
 
 # extract the dates and descriptions from the crawled page
 return_event_descr_ac_cal, return_event_date_ac_cal = extract_academic_calendar(academic_calendar_source)
-"""
-# print the fetched and extracted data
+# print the fetched and extracted data (academic calendar)
 print('\n')
 for i in range(len(return_event_descr_ac_cal)):
 	print('ac cal: ' + return_event_descr_ac_cal[i] + '|' + return_event_date_ac_cal[i])
-"""
 
 ## check for duplicates ##
-"""
-Both extracted data sets (statutory holidays and academic calendar) are going to be
-inserted into a database (DB). If any date coincides, i.e., when a date is both a statutory
-holiday as well a free day in the academic calendar, the former date may be overwritten
-in the DB. Therefore, check for duplicate dates and merge the description (of the event) in
-that case.
-"""
+
+#Both extracted data sets (statutory holidays and academic calendar) are going to be
+#inserted into a database (DB). If any date coincides, i.e., when a date is both a statutory
+#holiday as well a free day in the academic calendar, the former date may be overwritten
+#in the DB. Therefore, check for duplicate dates and merge the description (of the event) in
+#that case.
+
 print('len (dates) stat holiday:  ' + str(len(return_event_date_stat_hol)))
 print('len (dates) acad calendar: ' + str(len(return_event_date_ac_cal)))
 
@@ -363,27 +368,53 @@ for i in range(len(return_event_date_stat_hol)):
 print('\n\nlen (descr) final insert:  ' + str(len(insert_DB_event_descr)))
 print('len (dates) final insert: ' + str(len(insert_DB_event_date)))
 
-"""
-for k in range(len(insert_DB_event_date)):
-	print(str(k) + '|' + insert_DB_event_date[k] + '|' + insert_DB_event_descr[k])
-"""
+
+
+
 
 ## insert the dates in the database (if they are not already in the DB) ##
 ## sql handler testing ##
-sqlhandler_testobj = sqlhandler.SqlHandler()
+sqlhandlerObj = sqlhandler.SqlHandler()
 
-## fetch all existing DB ##
-print('\nfetching all existing DB:')
-returnAllDB = sqlhandler_testobj.fetch_all_db(1)
+#listStructureDB = sqlhandlerObj.fetch_all_tables(dbDatabase, 1)
 
-print('\n')
+#print('\n', dbDatabase)
 
-## fetch all tables from a DB ##
-selectDB = returnAllDB[1]['Database']
 
-print(selectDB)
+getTableData = sqlhandlerObj.fetch_table_content(dbDatabase, dbCalendarTable)
+#print(type(getTableData))
 
-print ('fetching all tables for DB: ' + selectDB)
-listStructureDB = sqlhandler_testobj.fetch_all_tables(selectDB, 1)
+# convert the table data into a numpy array
+arr = np.array(getTableData[0], dtype = object)
 
-print('\n')
+# remove the header information (stored in getTableData[1]) and
+# slice the array (to contain only dates)
+DB_fetch_dates_slice = arr[:, 0:1]
+
+for k in range(len(insert_DB_event_date)):
+	# cut the date str for checking against the DB
+	check_year = insert_DB_event_date[k][0:4]
+	check_month = insert_DB_event_date[k][5:7]
+	check_day = insert_DB_event_date[k][8:]
+
+	# search the fetched DB data whether the date to be inserted
+	# is already in the DB
+	rows = np.where(DB_fetch_dates_slice == datetime.date(int(check_year),
+		int(check_month), int(check_day)))
+
+	# check if the date to be inserted is already in the DB
+	if (len(DB_fetch_dates_slice[rows]) == 0):
+		print("CHECK|", check_year, "|", check_month, "|", check_day)
+		print(str(k) + '|' + insert_DB_event_date[k] + '|' + insert_DB_event_descr[k])
+		print(" -> OO: ", insert_DB_event_date[k], " || ", len(DB_fetch_dates_slice[rows]), " | ", rows)
+		print()
+
+
+		# insert the data into the DB
+		insertStatement = (
+			"INSERT INTO " + dbCalendarTable + " (date, vorlesungsfrei, shortinfo, longinfo, location, piclink, event) "
+			"VALUES (%s, %s, %s, %s, %s, %s, %s)"
+		)
+		insertData = (insert_DB_event_date[k], 1, insert_DB_event_descr[k], '', '', '', 0)
+
+		sqlhandlerObj.insert_into_table(dbDatabase, insertStatement, insertData, 0)
