@@ -7,3 +7,7 @@ replace the dummy variables with the correct ones for your connection.
 dbLoginUser = 'user_name'
 dbLoginPassword = 'user_password'
 dbHostURL = 'xx.xxx.xx.xx
+
+# database structural variables
+dbDatabase = 'database_name'
+dbCalendarTable = 'database_calendar_table_name'
