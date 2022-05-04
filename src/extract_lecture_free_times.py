@@ -4,9 +4,11 @@ import urllib.request
 import datetime
 import sqlhandler
 import numpy as np
+import pylogs
 
 # sql DB variables
 from config import *
+
 
 def fetch_page(URL_to_be_fetched):
 	"""Fetch the source code of a single page.
@@ -42,6 +44,8 @@ def extract_statutory_holidays(source_of_URL):
 	returned via a list (return_event_descr and return_event_date).
 	"""
 
+	general_log.append_to_log("starting extraction: statutory holidays")
+
 	# change the fetched data from byte to str
 	encoding = 'latin-1'
 	source_str_data = str(source_of_URL, encoding)
@@ -52,9 +56,16 @@ def extract_statutory_holidays(source_of_URL):
 	The cut string containing the relevant source code is stored
 	in the variable 'cut_string'.
 	"""
-	cut_pos1 = source_str_data.find('editableDocument')
-	cut_pos2 = source_str_data.find('bde-stx-wrapper')
+
+	cut_str_find1 = 'editableDocument'
+	cut_str_find2 = 'bde-stx-wrapper'
+
+	cut_pos1 = source_str_data.find(cut_str_find1)
+	cut_pos2 = source_str_data.find(cut_str_find2)
 	cut_string = source_str_data[cut_pos1:cut_pos2]
+
+	general_log.append_to_log("cut position1: " + cut_str_find1)
+	general_log.append_to_log("cut position2: " + cut_str_find2)
 
 	"""
 	extract the dates and information from the URL subset
@@ -64,6 +75,11 @@ def extract_statutory_holidays(source_of_URL):
 	"""
 	search_string1 = '<li><span>'
 	search_string2 = '</span>'
+
+	general_log.append_to_log("search string1: " + search_string1)
+	general_log.append_to_log("search string2: " + search_string2)
+
+	statutory_source_cut.dump_to_log(cut_string, "extracted part of the page source from which the events (dates, descriptions) will be extracted")
 
 	"""
 	Skip a certain amount of elements from the extractions as
@@ -137,6 +153,9 @@ def extract_statutory_holidays(source_of_URL):
 				str(len(return_event_date)) + ')'
 			)
 
+	general_log.append_to_log("amount of events found (date): " + str(len(return_event_date)))
+	general_log.append_to_log("amount of events found (description): " + str(len(return_event_descr)))
+
 	# return the data through the function
 	return return_event_descr, return_event_date
 
@@ -150,6 +169,8 @@ def extract_academic_calendar(source_of_URL):
 	the academic calendar (incl. its description) are extracted, stored and
 	returned via a list (return_event_descr and return_event_date).
 	"""
+
+	general_log.append_to_log("starting extraction: academic calendar")
 
 	def parse_single_date(event_string):
 		"""Extract/Convert a single date event.
@@ -189,7 +210,6 @@ def extract_academic_calendar(source_of_URL):
 			'-' + '%02d' % (int(event_day),)
 		)
 
-		#print(event_string_remove_year + '||||' + extracted_formatted_date)
 		return extracted_formatted_date
 
 	# change the fetched data from byte to str
@@ -202,19 +222,36 @@ def extract_academic_calendar(source_of_URL):
 	The cut string containing the relevant source code is stored
 	in the variable 'cut_string'.
 	"""
-	cut_pos1 = source_str_data.find('aria-labelledby="c426552Heading140139">')
-	cut_pos2 = source_str_data.find('col-xl-3 ml-xl-auto')
+
+	cut_str_find1 = 'aria-labelledby="c426624Heading140154">'
+	cut_str_find2 = 'wpGeneralContentElement wpContentElementText wpGeneralTextStyling'
+
+	cut_pos1 = source_str_data.find(cut_str_find1)
+	cut_pos2 = source_str_data.find(cut_str_find2)
 	cut_string = source_str_data[cut_pos1:cut_pos2]
+
+	# remove whitespaces from the string (&nbsp;)
+	cut_string = cut_string.replace('&nbsp; ', '')
+	cut_string = cut_string.replace('&nbsp;', '')
+
+	academic_cal_source_cut.dump_to_log(cut_string, "extracted part of the page source from which the events (dates, descriptions) will be extracted")
+
+	general_log.append_to_log("cut position1: " + cut_str_find1)
+	general_log.append_to_log("cut position2: " + cut_str_find2)
 
 	"""
 	extract the dates and information from the URL subset
-	data. Each single extraction event is enclosed in between:
-	'<li><strong>Osterferien: </strong>Montag, 11. April 2022
-	bis Samstag, 23. April 2022</li>', which is used to extract
-	the information.
+	data. Each single extraction event (incl. removed whitespaces)
+	is enclosed in between: '<li>Allerseelen:&nbsp; &nbsp; &nbsp; 
+	&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+	Mittwoch, 02. November 2022</li>', which is used to extract the
+	information.
 	"""
 	search_string1 = '<li>'
 	search_string2 = '</li>'
+
+	general_log.append_to_log("search string1: " + search_string1)
+	general_log.append_to_log("search string2: " + search_string2)
 
 	return_event_descr = []
 	return_event_date = []
@@ -227,23 +264,23 @@ def extract_academic_calendar(source_of_URL):
 		# extract the event description and the date
 		event_extract = cut_string[cut_pos3 + len(search_string1):cut_pos4]
 
-		event_description_raw = event_extract[event_extract.find('<strong>') +
-			8:event_extract.find('</strong>')]
-		event_description = event_description_raw.replace(':', '').rstrip()
+		# get the event description
+		event_description = event_extract[0:event_extract.find(':')]
 
-		event_date_raw = event_extract[event_extract.find('</strong>') + 9:].strip()
+		# extract the event date(s)
+		event_date_raw = event_extract[len(event_description) + 1:].strip()
 
+		# determine: single or range event
 		single_event = event_date_raw.find('bis')
 
+		# single event means a single day event, else, i.e., not minus one indicates
+		# an event ranging over multiple days
 		if single_event == -1:
 			single_date_str_parsed = parse_single_date(event_date_raw)
-			#print('single event (' + event_description + '): ' + single_date_str_parsed)
 
 			return_event_descr.append(event_description)
 			return_event_date.append(single_date_str_parsed)
 		else:
-			#print('range event (' + event_description + '): ' + event_date_raw)
-
 			event_date_start = event_date_raw[:single_event - 1]
 			event_date_end = event_date_raw[single_event + 4:]
 
@@ -253,17 +290,12 @@ def extract_academic_calendar(source_of_URL):
 			return_event_descr.append(event_description)
 			return_event_date.append(event_date_start_formatted)
 
-			#print('		|' + event_date_start + '|' + event_date_end + '|')
-			#print('		|' + event_date_start_formatted + '|' + event_date_end_formatted + '|')
-
 			# generate dates for this event between start and end of it
 			year = event_date_start_formatted[0:4]
 			month = event_date_start_formatted[5:7]
 			day = event_date_start_formatted[8:]
 
 			date = datetime.datetime(int(year), int(month), int(day))
-			#print(' >' + year + '|' + month + '|' + day)
-
 			end_reached = False
 
 			# populate ranged events, e.g., semester breaks
@@ -272,7 +304,6 @@ def extract_academic_calendar(source_of_URL):
 			for i in range(365): 
 				date += datetime.timedelta(days = 1)
 				extract_date = date.strftime("%Y-%m-%d")
-				#print(extract_date)
 
 				return_event_descr.append(event_description)
 				return_event_date.append(extract_date)
@@ -300,20 +331,34 @@ def extract_academic_calendar(source_of_URL):
 			str(len(return_event_date)) + ')'
 		)
 
+	general_log.append_to_log("amount of events found (date): " + str(len(return_event_date)))
+	general_log.append_to_log("amount of events found (description): " + str(len(return_event_descr)))
+
 	# return the data through the function
 	return return_event_descr, return_event_date
 
-	#print(source_str_data)
+## initiate log files
+general_log = pylogs.logs("logs/", "general_log")
+statutory_source = pylogs.logs("logs/", "statutory_source")
+academic_cal_source = pylogs.logs("logs/", "academic_calendar_source")
+statutory_source_cut = pylogs.logs("logs/", "statutory_source_cut")
+academic_cal_source_cut = pylogs.logs("logs/", "academic_calendar_source_cut")
+
+general_log.append_to_log("program start")
 
 ## crawl the data (fetch the source code of the URLs) ##
 
 # URL for the data which is to be crawled and processed
-academic_calendar_URL = 'https://www.tuwien.at/studium/akademischer-kalender/studienjahr-2021-22'
+#academic_calendar_URL = 'https://www.tuwien.at/studium/akademischer-kalender/studienjahr-2021-22'
+academic_calendar_URL = 'https://www.tuwien.at/studium/zulassung/akademischer-kalender/studienjahr-2022-23'
+general_log.append_to_log("academic_calendar_URL: " + academic_calendar_URL)
 statutory_holidays_URL = 'https://www.wien.gv.at/amtshelfer/feiertage/'
+general_log.append_to_log("statutory_holidays_URL: " + statutory_holidays_URL)
 
 ## statutory holidays ##
 # fetch the page source code (statutory holidays)
 statutory_holidays_source = fetch_page(statutory_holidays_URL)
+statutory_source.dump_to_log(str(statutory_holidays_source), "raw fetched page for the statutory holidays which will be processed")
 
 # extract the dates and descriptions from the crawled page
 return_event_descr_stat_hol, return_event_date_stat_hol = extract_statutory_holidays(
@@ -321,19 +366,24 @@ return_event_descr_stat_hol, return_event_date_stat_hol = extract_statutory_holi
 )
 
 # print the fetched and extracted data (statutory holidays)
+general_log.append_to_log("extracted statutory holidays (event_description | event_date):")
 for i in range(len(return_event_descr_stat_hol)):
 	print('stat hol: ' + return_event_descr_stat_hol[i] + ' | ' + return_event_date_stat_hol[i])
+	general_log.append_to_log("   " + return_event_descr_stat_hol[i] + ' | ' + return_event_date_stat_hol[i])
+
 
 ## academic calendar ##
 # fetch the page source code (academic calendar)
 academic_calendar_source = fetch_page(academic_calendar_URL)
+academic_cal_source.dump_to_log(str(academic_calendar_source), "raw fetched page for the statutory holidays which will be processed")
 
 # extract the dates and descriptions from the crawled page
 return_event_descr_ac_cal, return_event_date_ac_cal = extract_academic_calendar(academic_calendar_source)
-# print the fetched and extracted data (academic calendar)
 print('\n')
+general_log.append_to_log("extracted academic calendar (event_description | event_date):")
 for i in range(len(return_event_descr_ac_cal)):
 	print('ac cal: ' + return_event_descr_ac_cal[i] + '|' + return_event_date_ac_cal[i])
+	general_log.append_to_log("   " + return_event_descr_ac_cal[i] + ' | ' + return_event_date_ac_cal[i])
 
 ## check for duplicates ##
 
@@ -342,6 +392,8 @@ for i in range(len(return_event_descr_ac_cal)):
 #holiday as well a free day in the academic calendar, the former date may be overwritten
 #in the DB. Therefore, check for duplicate dates and merge the description (of the event) in
 #that case.
+
+general_log.append_to_log("removing/merging duplicates (overlaps in the statutory holidays and academic calendar)")
 
 print('len (dates) stat holiday:  ' + str(len(return_event_date_stat_hol)))
 print('len (dates) acad calendar: ' + str(len(return_event_date_ac_cal)))
@@ -361,6 +413,7 @@ for i in range(len(return_event_date_stat_hol)):
 			found_duplicate = True
 			amount_duplicates_found += 1
 			print('found duplicate: ' + str(amount_duplicates_found))
+			general_log.append_to_log("found and merged duplicates: " + insert_DB_event_descr[j])
 	if (found_duplicate == False):
 		insert_DB_event_date.append(return_event_date_stat_hol[i])
 		insert_DB_event_descr.append(return_event_descr_stat_hol[i])
@@ -368,21 +421,18 @@ for i in range(len(return_event_date_stat_hol)):
 print('\n\nlen (descr) final insert:  ' + str(len(insert_DB_event_descr)))
 print('len (dates) final insert: ' + str(len(insert_DB_event_date)))
 
-
-
-
+general_log.append_to_log("amount of found and merged duplicates: " + str(amount_duplicates_found))
+general_log.append_to_log("final length of list (dates): " + str(len(insert_DB_event_date)))
+general_log.append_to_log("final length of list (descriptions): " + str(len(insert_DB_event_descr)))
 
 ## insert the dates in the database (if they are not already in the DB) ##
-## sql handler testing ##
+general_log.append_to_log("adding extracted events into the database")
+
+# sql handler initialisation
 sqlhandlerObj = sqlhandler.SqlHandler()
 
-#listStructureDB = sqlhandlerObj.fetch_all_tables(dbDatabase, 1)
-
-#print('\n', dbDatabase)
-
-
+# fetch the information about the dates/events present (pre insert) in the database
 getTableData = sqlhandlerObj.fetch_table_content(dbDatabase, dbCalendarTable)
-#print(type(getTableData))
 
 # convert the table data into a numpy array
 arr = np.array(getTableData[0], dtype = object)
@@ -390,6 +440,7 @@ arr = np.array(getTableData[0], dtype = object)
 # remove the header information (stored in getTableData[1]) and
 # slice the array (to contain only dates)
 DB_fetch_dates_slice = arr[:, 0:1]
+count_position = 1
 
 for k in range(len(insert_DB_event_date)):
 	# cut the date str for checking against the DB
@@ -408,7 +459,7 @@ for k in range(len(insert_DB_event_date)):
 		print(str(k) + '|' + insert_DB_event_date[k] + '|' + insert_DB_event_descr[k])
 		print(" -> OO: ", insert_DB_event_date[k], " || ", len(DB_fetch_dates_slice[rows]), " | ", rows)
 		print()
-
+		general_log.append_to_log("event " + str(count_position) + " added to the database: " + insert_DB_event_date[k] + " | " + insert_DB_event_descr[k])
 
 		# insert the data into the DB
 		insertStatement = (
@@ -418,3 +469,10 @@ for k in range(len(insert_DB_event_date)):
 		insertData = (insert_DB_event_date[k], 1, insert_DB_event_descr[k], '', '', '', 0)
 
 		sqlhandlerObj.insert_into_table(dbDatabase, insertStatement, insertData, 0)
+	else:
+		print(str(k) + '| alread in DB: ' + insert_DB_event_date[k] + '|' + insert_DB_event_descr[k])
+		general_log.append_to_log("event " + str(count_position) + " already in database: " + insert_DB_event_date[k] + " | " + insert_DB_event_descr[k])
+
+	count_position += 1
+
+general_log.append_to_log("stopping program (finished)")

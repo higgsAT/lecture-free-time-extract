@@ -1,0 +1,13 @@
+2022-05-04 18:02:43 >> extracted part of the page source from which the events (dates, descriptions) will be extracted
+
+aria-labelledby="c426552Heading140139">
+                    <ul> 	<li><strong>Allerseelen:</strong> Dienstag, 02. November 2021</li> 	<li><strong>Tag des Landespatrons:</strong> Montag, 15. November 2021</li> 	<li><strong>Weihnachtsferien:</strong> Samstag, 18. Dezember 2021 bis Freitag, 07. Jänner 2022</li> 	<li><strong>Semesterferien:</strong> Samstag, 29. Jänner 2022 bis Montag, 28. Februar 2022</li> 	<li><strong>Osterferien: </strong>Montag, 11. April 2022 bis Samstag, 23. April 2022</li> 	<li><strong>Pfingstferien</strong>: Dienstag, 07. Juni 2022</li> 	<li><strong>Rektorstag:</strong> Freitag, 27. Mai 2022</li> 	<li><strong>Sommerferien:</strong> Freitag, 01. Juli 2022 bis Freitag, 30. September 2022</li> </ul>
+                </div>
+            </div>
+        
+    </div>
+
+<!--TYPO3SEARCH_end-->
+            </div>
+        </div>
+        <div class="

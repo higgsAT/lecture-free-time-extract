@@ -1,0 +1,425 @@
+2022-05-04 18:02:42 >> program start
+2022-05-04 18:02:42 >> academic_calendar_URL: https://www.tuwien.at/studium/akademischer-kalender/studienjahr-2021-22
+2022-05-04 18:02:42 >> statutory_holidays_URL: https://www.wien.gv.at/amtshelfer/feiertage/
+2022-05-04 18:02:43 >> starting extraction: statutory holidays
+2022-05-04 18:02:43 >> cut position1: editableDocument
+2022-05-04 18:02:43 >> cut position2: bde-stx-wrapper
+2022-05-04 18:02:43 >> search string1: <li><span>
+2022-05-04 18:02:43 >> search string2: </span>
+2022-05-04 18:02:43 >> amount of events found (date): 39
+2022-05-04 18:02:43 >> amount of events found (description): 39
+2022-05-04 18:02:43 >> extracted statutory holidays (event_description | event_date):
+2022-05-04 18:02:43 >>    Neujahr | 2022-01-01
+2022-05-04 18:02:43 >>    Heilige Drei Könige | 2022-01-06
+2022-05-04 18:02:43 >>    Ostermontag | 2022-04-18
+2022-05-04 18:02:43 >>    Staatsfeiertag | 2022-05-01
+2022-05-04 18:02:43 >>    Christi Himmelfahrt | 2022-05-26
+2022-05-04 18:02:43 >>    Pfingstmontag | 2022-06-06
+2022-05-04 18:02:43 >>    Fronleichnam | 2022-06-16
+2022-05-04 18:02:43 >>    Mariä Himmelfahrt | 2022-08-15
+2022-05-04 18:02:43 >>    Nationalfeiertag | 2022-10-26
+2022-05-04 18:02:43 >>    Allerheiligen | 2022-11-01
+2022-05-04 18:02:43 >>    Mariä Empfängnis | 2022-12-08
+2022-05-04 18:02:43 >>    Christtag | 2022-12-25
+2022-05-04 18:02:43 >>    Stefanitag | 2022-12-26
+2022-05-04 18:02:43 >>    Neujahr | 2023-01-01
+2022-05-04 18:02:43 >>    Heilige Drei Könige | 2023-01-06
+2022-05-04 18:02:43 >>    Ostermontag | 2023-04-10
+2022-05-04 18:02:43 >>    Staatsfeiertag | 2023-05-01
+2022-05-04 18:02:43 >>    Christi Himmelfahrt | 2023-05-18
+2022-05-04 18:02:43 >>    Pfingstmontag | 2023-05-29
+2022-05-04 18:02:43 >>    Fronleichnam | 2023-06-08
+2022-05-04 18:02:43 >>    Mariä Himmelfahrt | 2023-08-15
+2022-05-04 18:02:43 >>    Nationalfeiertag | 2023-10-26
+2022-05-04 18:02:43 >>    Allerheiligen | 2023-11-01
+2022-05-04 18:02:43 >>    Mariä Empfängnis | 2023-12-08
+2022-05-04 18:02:43 >>    Christtag | 2023-12-25
+2022-05-04 18:02:43 >>    Stefanitag | 2023-12-26
+2022-05-04 18:02:43 >>    Neujahr | 2024-01-01
+2022-05-04 18:02:43 >>    Heilige Drei Könige | 2024-01-06
+2022-05-04 18:02:43 >>    Ostermontag | 2024-04-01
+2022-05-04 18:02:43 >>    Staatsfeiertag | 2024-05-01
+2022-05-04 18:02:43 >>    Christi Himmelfahrt | 2024-05-09
+2022-05-04 18:02:43 >>    Pfingstmontag | 2024-05-20
+2022-05-04 18:02:43 >>    Fronleichnam | 2024-05-30
+2022-05-04 18:02:43 >>    Mariä Himmelfahrt | 2024-08-15
+2022-05-04 18:02:43 >>    Nationalfeiertag | 2024-10-26
+2022-05-04 18:02:43 >>    Allerheiligen | 2024-11-01
+2022-05-04 18:02:43 >>    Mariä Empfängnis | 2024-12-08
+2022-05-04 18:02:43 >>    Christtag | 2024-12-25
+2022-05-04 18:02:43 >>    Stefanitag | 2024-12-26
+2022-05-04 18:02:43 >> starting extraction: academic calendar
+2022-05-04 18:02:43 >> cut position1: aria-labelledby="c426552Heading140139">
+2022-05-04 18:02:43 >> cut position2: col-xl-3 ml-xl-auto
+2022-05-04 18:02:43 >> search string1: <li>
+2022-05-04 18:02:43 >> search string2: </li>
+2022-05-04 18:02:43 >> amount of events found (date): 161
+2022-05-04 18:02:43 >> amount of events found (description): 161
+2022-05-04 18:02:43 >> extracted academic calendar (event_description | event_date):
+2022-05-04 18:02:43 >>    Allerseelen | 2021-11-02
+2022-05-04 18:02:43 >>    Tag des Landespatrons | 2021-11-15
+2022-05-04 18:02:43 >>    Weihnachtsferien | 2021-12-18
+2022-05-04 18:02:43 >>    Weihnachtsferien | 2021-12-19
+2022-05-04 18:02:43 >>    Weihnachtsferien | 2021-12-20
+2022-05-04 18:02:43 >>    Weihnachtsferien | 2021-12-21
+2022-05-04 18:02:43 >>    Weihnachtsferien | 2021-12-22
+2022-05-04 18:02:43 >>    Weihnachtsferien | 2021-12-23
+2022-05-04 18:02:43 >>    Weihnachtsferien | 2021-12-24
+2022-05-04 18:02:43 >>    Weihnachtsferien | 2021-12-25
+2022-05-04 18:02:43 >>    Weihnachtsferien | 2021-12-26
+2022-05-04 18:02:43 >>    Weihnachtsferien | 2021-12-27
+2022-05-04 18:02:43 >>    Weihnachtsferien | 2021-12-28
+2022-05-04 18:02:43 >>    Weihnachtsferien | 2021-12-29
+2022-05-04 18:02:43 >>    Weihnachtsferien | 2021-12-30
+2022-05-04 18:02:43 >>    Weihnachtsferien | 2021-12-31
+2022-05-04 18:02:43 >>    Weihnachtsferien | 2022-01-01
+2022-05-04 18:02:43 >>    Weihnachtsferien | 2022-01-02
+2022-05-04 18:02:43 >>    Weihnachtsferien | 2022-01-03
+2022-05-04 18:02:43 >>    Weihnachtsferien | 2022-01-04
+2022-05-04 18:02:43 >>    Weihnachtsferien | 2022-01-05
+2022-05-04 18:02:43 >>    Weihnachtsferien | 2022-01-06
+2022-05-04 18:02:43 >>    Weihnachtsferien | 2022-01-07
+2022-05-04 18:02:43 >>    Semesterferien | 2022-01-29
+2022-05-04 18:02:43 >>    Semesterferien | 2022-01-30
+2022-05-04 18:02:43 >>    Semesterferien | 2022-01-31
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-01
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-02
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-03
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-04
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-05
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-06
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-07
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-08
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-09
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-10
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-11
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-12
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-13
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-14
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-15
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-16
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-17
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-18
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-19
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-20
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-21
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-22
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-23
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-24
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-25
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-26
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-27
+2022-05-04 18:02:43 >>    Semesterferien | 2022-02-28
+2022-05-04 18:02:43 >>    Osterferien | 2022-04-11
+2022-05-04 18:02:43 >>    Osterferien | 2022-04-12
+2022-05-04 18:02:43 >>    Osterferien | 2022-04-13
+2022-05-04 18:02:43 >>    Osterferien | 2022-04-14
+2022-05-04 18:02:43 >>    Osterferien | 2022-04-15
+2022-05-04 18:02:43 >>    Osterferien | 2022-04-16
+2022-05-04 18:02:43 >>    Osterferien | 2022-04-17
+2022-05-04 18:02:43 >>    Osterferien | 2022-04-18
+2022-05-04 18:02:43 >>    Osterferien | 2022-04-19
+2022-05-04 18:02:43 >>    Osterferien | 2022-04-20
+2022-05-04 18:02:43 >>    Osterferien | 2022-04-21
+2022-05-04 18:02:43 >>    Osterferien | 2022-04-22
+2022-05-04 18:02:43 >>    Osterferien | 2022-04-23
+2022-05-04 18:02:43 >>    Pfingstferien | 2022-06-07
+2022-05-04 18:02:43 >>    Rektorstag | 2022-05-27
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-01
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-02
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-03
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-04
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-05
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-06
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-07
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-08
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-09
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-10
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-11
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-12
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-13
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-14
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-15
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-16
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-17
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-18
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-19
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-20
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-21
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-22
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-23
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-24
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-25
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-26
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-27
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-28
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-29
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-30
+2022-05-04 18:02:43 >>    Sommerferien | 2022-07-31
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-01
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-02
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-03
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-04
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-05
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-06
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-07
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-08
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-09
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-10
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-11
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-12
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-13
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-14
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-15
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-16
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-17
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-18
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-19
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-20
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-21
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-22
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-23
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-24
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-25
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-26
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-27
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-28
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-29
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-30
+2022-05-04 18:02:43 >>    Sommerferien | 2022-08-31
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-01
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-02
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-03
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-04
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-05
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-06
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-07
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-08
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-09
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-10
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-11
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-12
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-13
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-14
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-15
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-16
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-17
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-18
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-19
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-20
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-21
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-22
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-23
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-24
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-25
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-26
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-27
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-28
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-29
+2022-05-04 18:02:43 >>    Sommerferien | 2022-09-30
+2022-05-04 18:02:43 >> removing/merging duplicates (overlaps in the statutory holidays and academic calendar)
+2022-05-04 18:02:43 >> found and merged duplicates: Weihnachtsferien, Neujahr
+2022-05-04 18:02:43 >> found and merged duplicates: Weihnachtsferien, Heilige Drei Könige
+2022-05-04 18:02:43 >> found and merged duplicates: Osterferien, Ostermontag
+2022-05-04 18:02:43 >> found and merged duplicates: Sommerferien, Mariä Himmelfahrt
+2022-05-04 18:02:43 >> amount of found and merged duplicates: 4
+2022-05-04 18:02:43 >> final length of list (dates): 196
+2022-05-04 18:02:43 >> final length of list (descriptions): 196
+2022-05-04 18:02:43 >> adding extracted events into the database
+2022-05-04 18:02:44 >> event 1 already in database: 2021-11-02 | Allerseelen
+2022-05-04 18:02:44 >> event 2 already in database: 2021-11-15 | Tag des Landespatrons
+2022-05-04 18:02:44 >> event 3 already in database: 2021-12-18 | Weihnachtsferien
+2022-05-04 18:02:44 >> event 4 already in database: 2021-12-19 | Weihnachtsferien
+2022-05-04 18:02:44 >> event 5 already in database: 2021-12-20 | Weihnachtsferien
+2022-05-04 18:02:44 >> event 6 already in database: 2021-12-21 | Weihnachtsferien
+2022-05-04 18:02:44 >> event 7 already in database: 2021-12-22 | Weihnachtsferien
+2022-05-04 18:02:44 >> event 8 already in database: 2021-12-23 | Weihnachtsferien
+2022-05-04 18:02:44 >> event 9 already in database: 2021-12-24 | Weihnachtsferien
+2022-05-04 18:02:44 >> event 10 already in database: 2021-12-25 | Weihnachtsferien
+2022-05-04 18:02:44 >> event 11 already in database: 2021-12-26 | Weihnachtsferien
+2022-05-04 18:02:44 >> event 12 already in database: 2021-12-27 | Weihnachtsferien
+2022-05-04 18:02:44 >> event 13 already in database: 2021-12-28 | Weihnachtsferien
+2022-05-04 18:02:44 >> event 14 already in database: 2021-12-29 | Weihnachtsferien
+2022-05-04 18:02:44 >> event 15 already in database: 2021-12-30 | Weihnachtsferien
+2022-05-04 18:02:44 >> event 16 already in database: 2021-12-31 | Weihnachtsferien
+2022-05-04 18:02:44 >> event 17 already in database: 2022-01-01 | Weihnachtsferien, Neujahr
+2022-05-04 18:02:44 >> event 18 already in database: 2022-01-02 | Weihnachtsferien
+2022-05-04 18:02:44 >> event 19 already in database: 2022-01-03 | Weihnachtsferien
+2022-05-04 18:02:44 >> event 20 already in database: 2022-01-04 | Weihnachtsferien
+2022-05-04 18:02:44 >> event 21 already in database: 2022-01-05 | Weihnachtsferien
+2022-05-04 18:02:44 >> event 22 already in database: 2022-01-06 | Weihnachtsferien, Heilige Drei Könige
+2022-05-04 18:02:44 >> event 23 already in database: 2022-01-07 | Weihnachtsferien
+2022-05-04 18:02:44 >> event 24 already in database: 2022-01-29 | Semesterferien
+2022-05-04 18:02:44 >> event 25 already in database: 2022-01-30 | Semesterferien
+2022-05-04 18:02:44 >> event 26 already in database: 2022-01-31 | Semesterferien
+2022-05-04 18:02:44 >> event 27 already in database: 2022-02-01 | Semesterferien
+2022-05-04 18:02:44 >> event 28 already in database: 2022-02-02 | Semesterferien
+2022-05-04 18:02:44 >> event 29 already in database: 2022-02-03 | Semesterferien
+2022-05-04 18:02:44 >> event 30 already in database: 2022-02-04 | Semesterferien
+2022-05-04 18:02:44 >> event 31 already in database: 2022-02-05 | Semesterferien
+2022-05-04 18:02:44 >> event 32 already in database: 2022-02-06 | Semesterferien
+2022-05-04 18:02:44 >> event 33 already in database: 2022-02-07 | Semesterferien
+2022-05-04 18:02:44 >> event 34 already in database: 2022-02-08 | Semesterferien
+2022-05-04 18:02:44 >> event 35 already in database: 2022-02-09 | Semesterferien
+2022-05-04 18:02:44 >> event 36 already in database: 2022-02-10 | Semesterferien
+2022-05-04 18:02:44 >> event 37 already in database: 2022-02-11 | Semesterferien
+2022-05-04 18:02:44 >> event 38 already in database: 2022-02-12 | Semesterferien
+2022-05-04 18:02:44 >> event 39 already in database: 2022-02-13 | Semesterferien
+2022-05-04 18:02:44 >> event 40 already in database: 2022-02-14 | Semesterferien
+2022-05-04 18:02:44 >> event 41 already in database: 2022-02-15 | Semesterferien
+2022-05-04 18:02:44 >> event 42 already in database: 2022-02-16 | Semesterferien
+2022-05-04 18:02:44 >> event 43 already in database: 2022-02-17 | Semesterferien
+2022-05-04 18:02:44 >> event 44 already in database: 2022-02-18 | Semesterferien
+2022-05-04 18:02:44 >> event 45 already in database: 2022-02-19 | Semesterferien
+2022-05-04 18:02:44 >> event 46 already in database: 2022-02-20 | Semesterferien
+2022-05-04 18:02:44 >> event 47 already in database: 2022-02-21 | Semesterferien
+2022-05-04 18:02:44 >> event 48 already in database: 2022-02-22 | Semesterferien
+2022-05-04 18:02:44 >> event 49 already in database: 2022-02-23 | Semesterferien
+2022-05-04 18:02:44 >> event 50 already in database: 2022-02-24 | Semesterferien
+2022-05-04 18:02:44 >> event 51 already in database: 2022-02-25 | Semesterferien
+2022-05-04 18:02:44 >> event 52 already in database: 2022-02-26 | Semesterferien
+2022-05-04 18:02:44 >> event 53 already in database: 2022-02-27 | Semesterferien
+2022-05-04 18:02:44 >> event 54 already in database: 2022-02-28 | Semesterferien
+2022-05-04 18:02:44 >> event 55 already in database: 2022-04-11 | Osterferien
+2022-05-04 18:02:44 >> event 56 already in database: 2022-04-12 | Osterferien
+2022-05-04 18:02:44 >> event 57 already in database: 2022-04-13 | Osterferien
+2022-05-04 18:02:44 >> event 58 already in database: 2022-04-14 | Osterferien
+2022-05-04 18:02:44 >> event 59 already in database: 2022-04-15 | Osterferien
+2022-05-04 18:02:44 >> event 60 already in database: 2022-04-16 | Osterferien
+2022-05-04 18:02:44 >> event 61 already in database: 2022-04-17 | Osterferien
+2022-05-04 18:02:44 >> event 62 already in database: 2022-04-18 | Osterferien, Ostermontag
+2022-05-04 18:02:44 >> event 63 already in database: 2022-04-19 | Osterferien
+2022-05-04 18:02:44 >> event 64 already in database: 2022-04-20 | Osterferien
+2022-05-04 18:02:44 >> event 65 already in database: 2022-04-21 | Osterferien
+2022-05-04 18:02:44 >> event 66 already in database: 2022-04-22 | Osterferien
+2022-05-04 18:02:44 >> event 67 already in database: 2022-04-23 | Osterferien
+2022-05-04 18:02:44 >> event 68 already in database: 2022-06-07 | Pfingstferien
+2022-05-04 18:02:44 >> event 69 already in database: 2022-05-27 | Rektorstag
+2022-05-04 18:02:44 >> event 70 already in database: 2022-07-01 | Sommerferien
+2022-05-04 18:02:44 >> event 71 already in database: 2022-07-02 | Sommerferien
+2022-05-04 18:02:44 >> event 72 already in database: 2022-07-03 | Sommerferien
+2022-05-04 18:02:44 >> event 73 already in database: 2022-07-04 | Sommerferien
+2022-05-04 18:02:44 >> event 74 already in database: 2022-07-05 | Sommerferien
+2022-05-04 18:02:44 >> event 75 already in database: 2022-07-06 | Sommerferien
+2022-05-04 18:02:44 >> event 76 already in database: 2022-07-07 | Sommerferien
+2022-05-04 18:02:44 >> event 77 already in database: 2022-07-08 | Sommerferien
+2022-05-04 18:02:44 >> event 78 already in database: 2022-07-09 | Sommerferien
+2022-05-04 18:02:44 >> event 79 already in database: 2022-07-10 | Sommerferien
+2022-05-04 18:02:44 >> event 80 already in database: 2022-07-11 | Sommerferien
+2022-05-04 18:02:44 >> event 81 already in database: 2022-07-12 | Sommerferien
+2022-05-04 18:02:44 >> event 82 already in database: 2022-07-13 | Sommerferien
+2022-05-04 18:02:44 >> event 83 already in database: 2022-07-14 | Sommerferien
+2022-05-04 18:02:44 >> event 84 already in database: 2022-07-15 | Sommerferien
+2022-05-04 18:02:44 >> event 85 already in database: 2022-07-16 | Sommerferien
+2022-05-04 18:02:44 >> event 86 already in database: 2022-07-17 | Sommerferien
+2022-05-04 18:02:44 >> event 87 already in database: 2022-07-18 | Sommerferien
+2022-05-04 18:02:44 >> event 88 already in database: 2022-07-19 | Sommerferien
+2022-05-04 18:02:44 >> event 89 already in database: 2022-07-20 | Sommerferien
+2022-05-04 18:02:44 >> event 90 already in database: 2022-07-21 | Sommerferien
+2022-05-04 18:02:44 >> event 91 already in database: 2022-07-22 | Sommerferien
+2022-05-04 18:02:44 >> event 92 already in database: 2022-07-23 | Sommerferien
+2022-05-04 18:02:44 >> event 93 already in database: 2022-07-24 | Sommerferien
+2022-05-04 18:02:44 >> event 94 already in database: 2022-07-25 | Sommerferien
+2022-05-04 18:02:44 >> event 95 already in database: 2022-07-26 | Sommerferien
+2022-05-04 18:02:44 >> event 96 already in database: 2022-07-27 | Sommerferien
+2022-05-04 18:02:44 >> event 97 already in database: 2022-07-28 | Sommerferien
+2022-05-04 18:02:44 >> event 98 already in database: 2022-07-29 | Sommerferien
+2022-05-04 18:02:44 >> event 99 already in database: 2022-07-30 | Sommerferien
+2022-05-04 18:02:44 >> event 100 already in database: 2022-07-31 | Sommerferien
+2022-05-04 18:02:44 >> event 101 already in database: 2022-08-01 | Sommerferien
+2022-05-04 18:02:44 >> event 102 already in database: 2022-08-02 | Sommerferien
+2022-05-04 18:02:44 >> event 103 already in database: 2022-08-03 | Sommerferien
+2022-05-04 18:02:44 >> event 104 already in database: 2022-08-04 | Sommerferien
+2022-05-04 18:02:44 >> event 105 already in database: 2022-08-05 | Sommerferien
+2022-05-04 18:02:44 >> event 106 already in database: 2022-08-06 | Sommerferien
+2022-05-04 18:02:44 >> event 107 already in database: 2022-08-07 | Sommerferien
+2022-05-04 18:02:44 >> event 108 already in database: 2022-08-08 | Sommerferien
+2022-05-04 18:02:44 >> event 109 already in database: 2022-08-09 | Sommerferien
+2022-05-04 18:02:44 >> event 110 already in database: 2022-08-10 | Sommerferien
+2022-05-04 18:02:44 >> event 111 already in database: 2022-08-11 | Sommerferien
+2022-05-04 18:02:44 >> event 112 already in database: 2022-08-12 | Sommerferien
+2022-05-04 18:02:44 >> event 113 already in database: 2022-08-13 | Sommerferien
+2022-05-04 18:02:44 >> event 114 already in database: 2022-08-14 | Sommerferien
+2022-05-04 18:02:44 >> event 115 already in database: 2022-08-15 | Sommerferien, Mariä Himmelfahrt
+2022-05-04 18:02:44 >> event 116 already in database: 2022-08-16 | Sommerferien
+2022-05-04 18:02:44 >> event 117 already in database: 2022-08-17 | Sommerferien
+2022-05-04 18:02:44 >> event 118 already in database: 2022-08-18 | Sommerferien
+2022-05-04 18:02:44 >> event 119 already in database: 2022-08-19 | Sommerferien
+2022-05-04 18:02:44 >> event 120 already in database: 2022-08-20 | Sommerferien
+2022-05-04 18:02:44 >> event 121 already in database: 2022-08-21 | Sommerferien
+2022-05-04 18:02:44 >> event 122 already in database: 2022-08-22 | Sommerferien
+2022-05-04 18:02:44 >> event 123 already in database: 2022-08-23 | Sommerferien
+2022-05-04 18:02:44 >> event 124 already in database: 2022-08-24 | Sommerferien
+2022-05-04 18:02:44 >> event 125 already in database: 2022-08-25 | Sommerferien
+2022-05-04 18:02:44 >> event 126 already in database: 2022-08-26 | Sommerferien
+2022-05-04 18:02:44 >> event 127 already in database: 2022-08-27 | Sommerferien
+2022-05-04 18:02:44 >> event 128 already in database: 2022-08-28 | Sommerferien
+2022-05-04 18:02:44 >> event 129 already in database: 2022-08-29 | Sommerferien
+2022-05-04 18:02:44 >> event 130 already in database: 2022-08-30 | Sommerferien
+2022-05-04 18:02:44 >> event 131 already in database: 2022-08-31 | Sommerferien
+2022-05-04 18:02:44 >> event 132 already in database: 2022-09-01 | Sommerferien
+2022-05-04 18:02:44 >> event 133 already in database: 2022-09-02 | Sommerferien
+2022-05-04 18:02:44 >> event 134 already in database: 2022-09-03 | Sommerferien
+2022-05-04 18:02:44 >> event 135 already in database: 2022-09-04 | Sommerferien
+2022-05-04 18:02:44 >> event 136 already in database: 2022-09-05 | Sommerferien
+2022-05-04 18:02:44 >> event 137 already in database: 2022-09-06 | Sommerferien
+2022-05-04 18:02:44 >> event 138 already in database: 2022-09-07 | Sommerferien
+2022-05-04 18:02:44 >> event 139 already in database: 2022-09-08 | Sommerferien
+2022-05-04 18:02:44 >> event 140 already in database: 2022-09-09 | Sommerferien
+2022-05-04 18:02:44 >> event 141 already in database: 2022-09-10 | Sommerferien
+2022-05-04 18:02:44 >> event 142 already in database: 2022-09-11 | Sommerferien
+2022-05-04 18:02:44 >> event 143 already in database: 2022-09-12 | Sommerferien
+2022-05-04 18:02:44 >> event 144 already in database: 2022-09-13 | Sommerferien
+2022-05-04 18:02:44 >> event 145 already in database: 2022-09-14 | Sommerferien
+2022-05-04 18:02:44 >> event 146 already in database: 2022-09-15 | Sommerferien
+2022-05-04 18:02:44 >> event 147 already in database: 2022-09-16 | Sommerferien
+2022-05-04 18:02:44 >> event 148 already in database: 2022-09-17 | Sommerferien
+2022-05-04 18:02:44 >> event 149 already in database: 2022-09-18 | Sommerferien
+2022-05-04 18:02:44 >> event 150 already in database: 2022-09-19 | Sommerferien
+2022-05-04 18:02:44 >> event 151 already in database: 2022-09-20 | Sommerferien
+2022-05-04 18:02:44 >> event 152 already in database: 2022-09-21 | Sommerferien
+2022-05-04 18:02:44 >> event 153 already in database: 2022-09-22 | Sommerferien
+2022-05-04 18:02:44 >> event 154 already in database: 2022-09-23 | Sommerferien
+2022-05-04 18:02:44 >> event 155 already in database: 2022-09-24 | Sommerferien
+2022-05-04 18:02:44 >> event 156 already in database: 2022-09-25 | Sommerferien
+2022-05-04 18:02:44 >> event 157 already in database: 2022-09-26 | Sommerferien
+2022-05-04 18:02:44 >> event 158 already in database: 2022-09-27 | Sommerferien
+2022-05-04 18:02:44 >> event 159 already in database: 2022-09-28 | Sommerferien
+2022-05-04 18:02:44 >> event 160 already in database: 2022-09-29 | Sommerferien
+2022-05-04 18:02:44 >> event 161 already in database: 2022-09-30 | Sommerferien
+2022-05-04 18:02:44 >> event 162 already in database: 2022-05-01 | Staatsfeiertag
+2022-05-04 18:02:44 >> event 163 already in database: 2022-05-26 | Christi Himmelfahrt
+2022-05-04 18:02:44 >> event 164 already in database: 2022-06-06 | Pfingstmontag
+2022-05-04 18:02:44 >> event 165 already in database: 2022-06-16 | Fronleichnam
+2022-05-04 18:02:44 >> event 166 already in database: 2022-10-26 | Nationalfeiertag
+2022-05-04 18:02:44 >> event 167 already in database: 2022-11-01 | Allerheiligen
+2022-05-04 18:02:44 >> event 168 already in database: 2022-12-08 | Mariä Empfängnis
+2022-05-04 18:02:44 >> event 169 already in database: 2022-12-25 | Christtag
+2022-05-04 18:02:44 >> event 170 already in database: 2022-12-26 | Stefanitag
+2022-05-04 18:02:44 >> event 171 already in database: 2023-01-01 | Neujahr
+2022-05-04 18:02:44 >> event 172 already in database: 2023-01-06 | Heilige Drei Könige
+2022-05-04 18:02:44 >> event 173 already in database: 2023-04-10 | Ostermontag
+2022-05-04 18:02:44 >> event 174 already in database: 2023-05-01 | Staatsfeiertag
+2022-05-04 18:02:44 >> event 175 already in database: 2023-05-18 | Christi Himmelfahrt
+2022-05-04 18:02:44 >> event 176 already in database: 2023-05-29 | Pfingstmontag
+2022-05-04 18:02:44 >> event 177 already in database: 2023-06-08 | Fronleichnam
+2022-05-04 18:02:44 >> event 178 already in database: 2023-08-15 | Mariä Himmelfahrt
+2022-05-04 18:02:44 >> event 179 already in database: 2023-10-26 | Nationalfeiertag
+2022-05-04 18:02:44 >> event 180 already in database: 2023-11-01 | Allerheiligen
+2022-05-04 18:02:44 >> event 181 already in database: 2023-12-08 | Mariä Empfängnis
+2022-05-04 18:02:44 >> event 182 already in database: 2023-12-25 | Christtag
+2022-05-04 18:02:44 >> event 183 already in database: 2023-12-26 | Stefanitag
+2022-05-04 18:02:44 >> event 184 already in database: 2024-01-01 | Neujahr
+2022-05-04 18:02:44 >> event 185 already in database: 2024-01-06 | Heilige Drei Könige
+2022-05-04 18:02:44 >> event 186 already in database: 2024-04-01 | Ostermontag
+2022-05-04 18:02:44 >> event 187 already in database: 2024-05-01 | Staatsfeiertag
+2022-05-04 18:02:44 >> event 188 already in database: 2024-05-09 | Christi Himmelfahrt
+2022-05-04 18:02:44 >> event 189 already in database: 2024-05-20 | Pfingstmontag
+2022-05-04 18:02:44 >> event 190 already in database: 2024-05-30 | Fronleichnam
+2022-05-04 18:02:44 >> event 191 already in database: 2024-08-15 | Mariä Himmelfahrt
+2022-05-04 18:02:44 >> event 192 already in database: 2024-10-26 | Nationalfeiertag
+2022-05-04 18:02:44 >> event 193 already in database: 2024-11-01 | Allerheiligen
+2022-05-04 18:02:44 >> event 194 already in database: 2024-12-08 | Mariä Empfängnis
+2022-05-04 18:02:44 >> event 195 already in database: 2024-12-25 | Christtag
+2022-05-04 18:02:44 >> event 196 already in database: 2024-12-26 | Stefanitag
+2022-05-04 18:02:44 >> stopping program (finished)
