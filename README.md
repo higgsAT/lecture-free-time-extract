@@ -10,7 +10,7 @@ This project has the following folder structure
 .
 ├── logs
 └── src
-    └── sqlhandler.py
+    ├── sqlhandler.py
     ├── pylogs.py
     ├── extract_lecture_free_times.py
     └── config_example.py
