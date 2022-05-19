@@ -1,0 +1,10 @@
+2022-05-19 22:45:26 >> extracted part of the page source from which the events (dates, descriptions) will be extracted
+
+aria-labelledby="c426624Heading140154">
+                    <ul> 	<li>Allerseelen:Mittwoch, 02. November 2022</li> 	<li>Tag des Landespatrons:Dienstag, 15. November 2022</li> 	<li>Weihnachtsferien:Freitag, 23. Dezember 2022 bis Samstag, 07. Jänner 2023</li> 	<li>Semesterferien:Freitag, 27. Jänner 2023 bis Dienstag, 28. Februar 2023</li> 	<li>Osterferien:Montag, 03. April 2023 bis Samstag, 15. April 2023</li> 	<li>Pfingstferien:Dienstag, 30. Mai 2023</li> 	<li>Rektorstag:Freitag, 19. Mai 2023</li> 	<li>Sommerferien:Samstag, 01. Juli 2023 bis Samstag, 30. September 2023</li> </ul>
+                </div>
+            </div>
+        
+    </div>
+
+<div class="

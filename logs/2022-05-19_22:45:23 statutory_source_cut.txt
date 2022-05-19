@@ -1,0 +1,54 @@
+2022-05-19 22:45:26 >> extracted part of the page source from which the events (dates, descriptions) will be extracted
+
+editableDocument"><!--googleoff: snippet --><h1>Gesetzliche Feiertage in Österreich</h1><!--googleon: snippet -->
+<ul class="ul_unmarked vie-lst-horizontal">
+<li><span><a href="#jahr2022">2022</a></span></li>
+<li><span><a href="#jahr2023">2023</a></span></li>
+<li><span><a href="#jahr2024">2024</a></span></li></ul>
+<h2>Feiertage im Jahr 2022<a name="jahr2022" id="jahr2022"></a></h2>
+<ul class="ul_marked">
+<li><span>Neujahr: Samstag, 1. Jänner 2022</span></li>
+<li><span>Heilige Drei Könige: Donnerstag, 6. Jänner 2022</span></li>
+<li><span>Ostermontag: Montag, 18. April 2022</span></li>
+<li><span>Staatsfeiertag: Sonntag, 1. Mai 2022</span></li>
+<li><span>Christi Himmelfahrt: Donnerstag, 26. Mai 2022</span></li>
+<li><span>Pfingstmontag: Montag, 6. Juni 2022</span></li>
+<li><span>Fronleichnam: Donnerstag, 16. Juni 2022</span></li>
+<li><span>Mariä Himmelfahrt: Montag, 15. August 2022</span></li>
+<li><span>Nationalfeiertag: Mittwoch, 26. Oktober 2022</span></li>
+<li><span>Allerheiligen: Dienstag, 1. November 2022</span></li>
+<li><span>Mariä Empfängnis: Donnerstag, 8. Dezember 2022</span></li>
+<li><span>Christtag: Sonntag, 25. Dezember 2022</span></li>
+<li><span>Stefanitag: Montag, 26. Dezember 2022</span></li></ul>
+<h2><a name="jahr2023" id="jahr2023"></a>Feiertage im Jahr 2023</h2>
+<ul class="ul_marked">
+<li><span>Neujahr: Sonntag, 1. Jänner 2023</span></li>
+<li><span>Heilige Drei Könige: Freitag, 6. Jänner 2023</span></li>
+<li><span>Ostermontag: Montag, 10. April 2023</span></li>
+<li><span>Staatsfeiertag: Montag, 1. Mai 2023</span></li>
+<li><span>Christi Himmelfahrt: Donnerstag, 18. Mai 2023</span></li>
+<li><span>Pfingstmontag: Montag, 29. Mai 2023</span></li>
+<li><span>Fronleichnam: Donnerstag, 8. Juni 2023</span></li>
+<li><span>Mariä Himmelfahrt: Dienstag, 15. August 2023</span></li>
+<li><span>Nationalfeiertag: Donnerstag, 26. Oktober 2023</span></li>
+<li><span>Allerheiligen: Mittwoch, 1. November 2023</span></li>
+<li><span>Mariä Empfängnis: Freitag, 8. Dezember 2023</span></li>
+<li><span>Christtag: Montag, 25. Dezember 2023</span></li>
+<li><span>Stefanitag: Dienstag, 26. Dezember 2023</span></li></ul>
+<h2>Feiertage im Jahr 2024<a name="jahr2024" id="jahr2024"></a></h2>
+<ul class="ul_marked">
+<li><span>Neujahr: Montag, 1. Jänner 2024</span></li>
+<li><span>Heilige Drei Könige: Samstag, 6. Jänner 2024</span></li>
+<li><span>Ostermontag: Montag, 1. April 2024</span></li>
+<li><span>Staatsfeiertag: Mittwoch, 1. Mai 2024</span></li>
+<li><span>Christi Himmelfahrt: Donnerstag, 9. Mai 2024</span></li>
+<li><span>Pfingstmontag: Montag, 20. Mai 2024</span></li>
+<li><span>Fronleichnam: Donnerstag, 30. Mai 2024</span></li>
+<li><span>Mariä Himmelfahrt: Donnerstag, 15. August 2024</span></li>
+<li><span>Nationalfeiertag: Samstag, 26. Oktober 2024</span></li>
+<li><span>Allerheiligen: Freitag, 1. November 2024</span></li>
+<li><span>Mariä Empfängnis: Sonntag, 8. Dezember 2024</span></li>
+<li><span>Christtag: Mittwoch, 25. Dezember 2024</span></li>
+<li><span>Stefanitag: Donnerstag, 26. Dezember 2024</span></li></ul>
+<h2>Einbindung im eigenen Kalender</h2>
+<p class="
